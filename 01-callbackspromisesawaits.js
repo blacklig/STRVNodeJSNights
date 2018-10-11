@@ -16,7 +16,7 @@ const apiPath = 'http://swapi.co/api/people/1';
 
 // 1) using callbacks
 
-
+/*
 
 console.log(`Fetching data using callbacks approach`);
 request({uri:apiPath,json:1}, function (error, response, body) {
@@ -41,8 +41,9 @@ request({uri:apiPath,json:1}, function (error, response, body) {
 console.log(`waiting for data`);
 
 
+*/
 
-
+/*
 
 // 2) using promises
 
@@ -68,12 +69,14 @@ rp({uri:apiPath,json:1})
 
 console.log('Hello there, I am not blocked. Meanwhile API calls work hard.');
 
+*/
 
+// /*
 
 // 3) using await - async ES2017
 
 function parseVehicles(vehiclesURI) {
-    return new Promise(
+    return new Promise(resolve => {
         vehiclesURI.forEach((vehicleURI)=>
             rp({uri: vehicleURI, json: 1})
                 .then((body) => {
@@ -81,7 +84,7 @@ function parseVehicles(vehiclesURI) {
                 }).catch((err) => {
                 console.log('Api call failed');
             })
-        )
+        )}
     )
 }
 
@@ -101,3 +104,5 @@ async function callApi () {
 callApi()
     .then( ()=>{console.log('Calling SW API.');})
     .catch( (err) => {console.log(`${err} - API couldnt be called`)});
+
+// */
